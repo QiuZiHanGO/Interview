@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深拷贝</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+//1.JSON转换：
+let copyObj = [1,2,3,4,5];
+let targetObj = JSON.parse(JSON.stringify(copyObj));
+//2.普通递归函数：
+function deepCopy( source ) {
+if (!isObject(source)) return source; //如果不是对象的话直接返回
+    let target = Array.isArray( source ) ? [] : {} //数组兼容
+    for ( let k in source ) {
+    	if (source.hasOwnProperty(k)) {//只拷贝对象自身的属性
+    		if ( typeof source[ k ] === 'object' ) {
+            	target[ k ] = deepCopy( source[ k ] )
+        	} else {
+            	target[ k ] = source[ k ]
+        	}
+    	}
+    }
+    return target	
+}
+
+function isObject(obj) {
+    return typeof obj === 'object' && obj !== null
+}
+</script>
