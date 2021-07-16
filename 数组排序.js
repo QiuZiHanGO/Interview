@@ -33,3 +33,20 @@ function quickSort(nums){
 }
 console.log(quickSort(orignArray))
 //3.选择排序
+function chooseSort(nums){
+  let minIndex = 0;
+  let length = nums.length;
+  for(let i=0;i<length-1;i++){
+    minIndex = i;
+    for(let j=i;j<length;j++){
+      if(nums[minIndex]>nums[j]){
+        minIndex = j
+      }
+    }
+    if(minIndex!==i){
+      [nums[i],nums[index]] = [nums[index],nums[i]]
+    }
+  }
+  return nums
+}
+console.log(chooseSort(orignArray))
